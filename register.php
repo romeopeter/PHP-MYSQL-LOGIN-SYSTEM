@@ -4,13 +4,9 @@
 
 
 	// Define variables and initialize with empty values
-	$username = "";
-	$password = "";
-	$confirm_password = "";
+	$username = $password = $confirm_password = "";
 
-	$username_err = "";
-	$password_err = "";
-	$confirm_password_err = "";
+	$username_err = $password_err = $confirm_password_err = "";
 
 	// Process submitted form data
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -70,7 +66,7 @@
 	        $confirm_password_err = "Please confirm password.";     
 	    } else{
 	        $confirm_password = trim($_POST["confirm_password"]);
-	        if(empty($password_err) and ($password != $confirm_password)){
+	        if(empty($password_err) && ($password != $confirm_password)){
 	            $confirm_password_err = "Password did not match.";
 	        }
 	    }
@@ -83,6 +79,7 @@
 			$sql = 'INSERT INTO users (username, password) VALUES (?,?)';
 
 			if ($stmt = $mysql_db->prepare($sql)) {
+
 				// Set parmater
 				$param_username = $username;
 				$param_password = password_hash($password, PASSWORD_DEFAULT); // Created a password
@@ -101,8 +98,6 @@
 
 				// Close statement
 				$stmt->close();	
-			} else {
-				echo "Didn't works";
 			}
 
 			// Close connection
