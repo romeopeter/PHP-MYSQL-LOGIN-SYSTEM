@@ -32,3 +32,5 @@ User is redirected to `welcome.php` if login is successful.
 ### PASSWORD RESET
 logged in user can reset password for registered account.
 script is in `password_reset.php`
+<hr />
+<small>Give this a ⭐ if you found it useful, and follow me for more interesting projects</small>
